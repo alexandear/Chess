@@ -5,7 +5,7 @@
 class Knight : public AbstractPiece
 {
 public:
-    Knight(Side t_side);
+    Knight(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::Knight; }
 

@@ -3,7 +3,7 @@
 #include <QString>
 #include <memory>
 
-#include "side.h"
+#include "game.h"
 
 class Board;
 class Coordinate;
@@ -24,7 +24,7 @@ public:
         King
     };
 
-    explicit AbstractPiece(Side t_side);
+    explicit AbstractPiece(Game::Side t_side);
     virtual ~AbstractPiece() {}
     AbstractPiece(const AbstractPiece&) = default;
     AbstractPiece(AbstractPiece&&) = default;
@@ -32,21 +32,23 @@ public:
     AbstractPiece& operator=(AbstractPiece&&) & = default;
 
     static QString toString(Type t_type);
+    static char letter(Type t_type);
+    static Type fromLetter(char t_ch);
 
-    static PiecePtr make(Type t_type, Side t_side);
+    static PiecePtr make(Type t_type, Game::Side t_side);
 
     bool isMovePermitted(const Coordinate& t_from, const Coordinate& t_to,
                          const Board& t_board) const;
 
     virtual Type type() const = 0;
-    Side side() const { return m_side; }
-    operator QString() { return ::toString(side()) + " " + toString(type()); }
+    Game::Side side() const { return m_side; }
+    operator QString() { return Game::toString(side()) + " " + toString(type()); }
 
 protected:
     virtual bool areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
                                  const Board& t_board) const = 0;
 
-    Side m_side;
+    Game::Side m_side;
 
 };
 

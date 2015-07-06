@@ -1,7 +1,7 @@
 #include "king.h"
 #include "board.h"
 
-King::King(Side t_side)
+King::King(Game::Side t_side)
     : AbstractPiece(t_side)
 {
 }

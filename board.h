@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 #include "coordinate.h"
-#include "side.h"
+#include "game.h"
 
 class AbstractPiece;
 
@@ -38,12 +38,18 @@ public:
 
     void setPieces(PiecesMatrix t_pieces) { m_pieces = t_pieces; }
     PiecesMatrix pieces() const { return m_pieces; }
+    void setActiveSide(Game::Side t_side) { m_activeSide = t_side; }
+    Game::Side activeSide() const { return m_activeSide; }
+    void setMoveNumber(int t_moveNumber) { m_moveNumber = t_moveNumber; }
 
     void move(const Coordinate& t_from, const Coordinate& t_to);
     void print() const;
+
 private:
+    Game::Side m_activeSide;
+    int m_moveNumber;
     PiecesMatrix m_pieces;
 
-    void placePieces(Side t_side);
+    void placePieces(Game::Side t_side);
 };
 

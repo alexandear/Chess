@@ -1,7 +1,7 @@
 #include "bishop.h"
 #include "board.h"
 
-Bishop::Bishop(Side t_side)
+Bishop::Bishop(Game::Side t_side)
     : AbstractPiece(t_side)
 {
 }

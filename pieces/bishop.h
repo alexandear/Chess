@@ -5,7 +5,7 @@
 class Bishop : virtual public AbstractPiece
 {
 public:
-    Bishop(Side t_side);
+    Bishop(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::Bishop; }
 

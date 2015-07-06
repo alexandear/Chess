@@ -1,12 +1,12 @@
 #include <QTextStream>
 
-#include "abstractpiece.h"
+#include "pieces/abstractpiece.h"
 #include "board.h"
 
 Board::Board()
 {
-    placePieces(Side::White);
-    placePieces(Side::Black);
+    placePieces(Game::Side::White);
+    placePieces(Game::Side::Black);
 }
 
 void Board::move(const Coordinate& t_from, const Coordinate& t_to)
@@ -20,12 +20,12 @@ void Board::move(const Coordinate& t_from, const Coordinate& t_to)
     }
 }
 
-void Board::placePieces(Side t_side)
+void Board::placePieces(Game::Side t_side)
 {
     using Type = AbstractPiece::Type;
 
-    auto pawn = t_side == Side::White ? 1 : 6;
-    auto base = t_side == Side::White ? 0 : 7;
+    auto pawn = t_side == Game::Side::White ? 1 : 6;
+    auto base = t_side == Game::Side::White ? 0 : 7;
 
     for (auto i = 0; i < SQUARE_COUNT; ++i)
         at(pawn, i) = AbstractPiece::make(Type::Pawn, t_side);
@@ -59,9 +59,9 @@ void Board::print() const
             if (((iRow % 3) == 1) && ((iCol % 4) == 1 || (iCol % 4) == 2)
                     && at(7-iSquareRow, iSquareCol)) {
                 if ((iCol % 4) == 1) {
-                    sout << ::toString(at(7-iSquareRow, iSquareCol)->side()).left(1);
+                    sout << Game::letter(at(7-iSquareRow, iSquareCol)->side());
                 } else {
-                    sout << AbstractPiece::toString(at(7-iSquareRow, iSquareCol)->type()).left(1);
+                    sout << AbstractPiece::letter(at(7-iSquareRow, iSquareCol)->type());
                 }
             } else {
                 if ((iSquareRow + iSquareCol) % 2 == 1) {

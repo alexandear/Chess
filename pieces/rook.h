@@ -5,7 +5,7 @@
 class Rook : virtual public AbstractPiece
 {
 public:
-    Rook(Side t_side);
+    Rook(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::Rook; }
 

@@ -1,7 +1,7 @@
 #include "rook.h"
 #include "board.h"
 
-Rook::Rook(Side t_side)
+Rook::Rook(Game::Side t_side)
     : AbstractPiece(t_side)
 {
 }

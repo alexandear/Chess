@@ -1,7 +1,7 @@
 #include "pawn.h"
 #include "board.h"
 
-Pawn::Pawn(Side t_side)
+Pawn::Pawn(Game::Side t_side)
     : AbstractPiece(t_side)
 {
 }
@@ -26,7 +26,7 @@ bool Pawn::areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
 
 bool Pawn::check(const Coordinate& t_from, const Coordinate& t_to) const
 {
-    if (side() == Side::White) {
+    if (side() == Game::Side::White) {
         if (t_to.rank() == t_from.rank() + 1)
             return true;
     } else {

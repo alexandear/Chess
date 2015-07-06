@@ -1,6 +1,6 @@
 #include "queen.h"
 
-Queen::Queen(Side t_side)
+Queen::Queen(Game::Side t_side)
     : AbstractPiece(t_side), Bishop(t_side), Rook(t_side)
 {
 

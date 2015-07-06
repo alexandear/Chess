@@ -5,7 +5,7 @@
 class King : public AbstractPiece
 {
 public:
-    King(Side t_side);
+    King(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::King; }
 

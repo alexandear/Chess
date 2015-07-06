@@ -1,7 +1,7 @@
 #include "knight.h"
 #include "board.h"
 
-Knight::Knight(Side t_side)
+Knight::Knight(Game::Side t_side)
     : AbstractPiece(t_side)
 {
 }

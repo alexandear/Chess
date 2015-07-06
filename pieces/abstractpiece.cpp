@@ -9,7 +9,7 @@
 #include "rook.h"
 #include "queen.h"
 
-AbstractPiece::AbstractPiece(Side t_side)
+AbstractPiece::AbstractPiece(Game::Side t_side)
     : m_side(t_side)
 {
 }
@@ -29,7 +29,7 @@ QString AbstractPiece::toString(Type t_type)
     case Type::Pawn:
         return "Pawn";
     case Type::Knight:
-        return "NKight";
+        return "Knight";
     case Type::Bishop:
         return "Bishop";
     case Type::Rook:
@@ -41,10 +41,49 @@ QString AbstractPiece::toString(Type t_type)
     default:
         return " ";
     }
-
 }
 
-AbstractPiece::PiecePtr AbstractPiece::make(Type t_type, Side t_side)
+char AbstractPiece::letter(AbstractPiece::Type t_type)
+{
+    switch (t_type) {
+    case Type::Pawn:
+        return 'p';
+    case Type::Knight:
+        return 'n';
+    case Type::Bishop:
+        return 'b';
+    case Type::Rook:
+        return 'r';
+    case Type::Queen:
+        return 'q';
+    case Type::King:
+        return 'k';
+    default:
+        return ' ';
+    }
+}
+
+AbstractPiece::Type AbstractPiece::fromLetter(char t_ch)
+{
+    switch (tolower(t_ch)) {
+    case 'p':
+        return Type::Pawn;
+    case 'n':
+        return Type::Knight;
+    case 'b':
+        return Type::Bishop;
+    case 'r':
+        return Type::Rook;
+    case 'q':
+        return Type::Queen;
+    case 'k':
+        return Type::King;
+    default:
+        return Type::Empty;
+    }
+}
+
+AbstractPiece::PiecePtr AbstractPiece::make(Type t_type, Game::Side t_side)
 {
     using std::make_shared;
     switch (t_type) {
@@ -63,6 +102,5 @@ AbstractPiece::PiecePtr AbstractPiece::make(Type t_type, Side t_side)
     default:
         return make_shared<Pawn>(t_side);
     }
-
 }
 

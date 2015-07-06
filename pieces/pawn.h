@@ -5,7 +5,7 @@
 class Pawn : public AbstractPiece
 {
 public:
-    explicit Pawn(Side t_side);
+    explicit Pawn(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::Pawn; }
 

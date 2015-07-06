@@ -6,7 +6,7 @@
 class Queen : public Bishop, public Rook
 {
 public:
-    Queen(Side t_side);
+    Queen(Game::Side t_side);
 
     AbstractPiece::Type type() const override { return AbstractPiece::Type::Queen; }
 

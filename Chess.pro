@@ -4,29 +4,29 @@ QT += widgets
 
 SOURCES += main.cpp \
     gamecontroller.cpp \
-    abstractpiece.cpp \
+    pieces/abstractpiece.cpp \
     board.cpp \
-    pawn.cpp \
-    knight.cpp \
-    bishop.cpp \
-    rook.cpp \
-    queen.cpp \
-    king.cpp \
-    side.cpp \
-    fenparser.cpp
+    pieces/pawn.cpp \
+    pieces/knight.cpp \
+    pieces/bishop.cpp \
+    pieces/rook.cpp \
+    pieces/queen.cpp \
+    pieces/king.cpp \
+    fenparser.cpp \
+    game.cpp
 
 CONFIG += C++11 console
 
 HEADERS += \
     gamecontroller.h \
-    abstractpiece.h \
+    pieces/abstractpiece.h \
     board.h \
-    pawn.h \
+    pieces/pawn.h \
     coordinate.h \
-    knight.h \
-    bishop.h \
-    rook.h \
-    queen.h \
-    king.h \
-    side.h \
-    fenparser.h
+    pieces/knight.h \
+    pieces/bishop.h \
+    pieces/rook.h \
+    pieces/queen.h \
+    pieces/king.h \
+    fenparser.h \
+    game.h
