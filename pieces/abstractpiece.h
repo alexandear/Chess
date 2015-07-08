@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QDebug>
 #include <QString>
 #include <memory>
 
@@ -46,7 +47,7 @@ public:
 
 protected:
     virtual bool areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                                 const Board& t_board) const = 0;
+                                     const Board& t_board) const = 0;
 
     Game::Side m_side;
 

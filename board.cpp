@@ -1,12 +1,21 @@
 #include <QTextStream>
+#include <QDebug>
 
 #include "pieces/abstractpiece.h"
 #include "board.h"
+#include "fenparser.h"
+
+const QString Board::START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 Board::Board()
 {
-    placePieces(Game::Side::White);
-    placePieces(Game::Side::Black);
+    setFen(START_FEN);
+}
+
+void Board::setFen(const QString& t_fenStr)
+{
+    auto fenTuple = FenParser().read(t_fenStr);
+    std::tie(m_pieces, m_activeSide, m_moveNumber) = fenTuple;
 }
 
 void Board::move(const Coordinate& t_from, const Coordinate& t_to)

@@ -15,7 +15,7 @@ AbstractPiece::AbstractPiece(Game::Side t_side)
 }
 
 bool AbstractPiece::isMovePermitted(const Coordinate& t_from, const Coordinate& t_to,
-                                const Board& t_board) const
+                                    const Board& t_board) const
 {
     auto dest = t_board.at(t_to);
     if (!dest || m_side != dest->side())

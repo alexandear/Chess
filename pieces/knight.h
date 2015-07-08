@@ -11,7 +11,7 @@ public:
 
 private:
     bool areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                         const Board& t_board) const override;
+                             const Board& t_board) const override;
 
     bool check(const Coordinate& t_from, const Coordinate& t_to, int t_left, int t_right) const;
 };

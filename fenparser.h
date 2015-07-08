@@ -1,5 +1,8 @@
 #pragma once
 
+#include <tuple>
+#include <QStringList>
+
 #include "board.h"
 
 /*
@@ -14,7 +17,8 @@ struct FenParser
 {
     const char SEP = '/';
 
-    Board read(const QString& t_fenRow) const;
+    std::tuple<Board::PiecesMatrix, Game::Side, int>
+    read(const QString& t_fenRow) const;
 
 private:
     Board::PiecesMatrix parsePiecePlacement(const QString& t_piecePlacement) const;
@@ -22,6 +26,16 @@ private:
     int parseFullmoveNumber(const QString& t_moveNumber) const;
 
     bool isSymbolPermitted(char t_ch) const;
+
+    QStringList reversed(const QStringList& t_list) const;
 };
 
+
+struct FenParserError : public std::runtime_error
+{
+    FenParserError(const std::string& msg)
+        : std::runtime_error("FenParserError: " + msg)
+    {
+    }
+};
 

@@ -12,7 +12,8 @@ class AbstractPiece;
 class Board
 {
 public:
-    const static int SQUARE_COUNT = 8;
+    static const int SQUARE_COUNT = 8;
+    static const QString START_FEN;
 
     using PiecePtr = std::shared_ptr<AbstractPiece>;
     using PiecesMatrix = std::array<std::array<PiecePtr, SQUARE_COUNT>, SQUARE_COUNT>;
@@ -36,6 +37,7 @@ public:
         return m_pieces.at(t_coordinate.file()).at(t_coordinate.rank());
     }
 
+    void setFen(const QString& t_fenStr);
     void setPieces(PiecesMatrix t_pieces) { m_pieces = t_pieces; }
     PiecesMatrix pieces() const { return m_pieces; }
     void setActiveSide(Game::Side t_side) { m_activeSide = t_side; }
