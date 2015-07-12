@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += widgets
+QT += qml quick widgets
 
 SOURCES += main.cpp \
     gamecontroller.cpp \
@@ -14,6 +14,8 @@ SOURCES += main.cpp \
     pieces/king.cpp \
     fenparser.cpp \
     game.cpp
+
+RESOURCES += resources.qrc
 
 CONFIG += C++11 console
 
@@ -30,3 +32,8 @@ HEADERS += \
     pieces/king.h \
     fenparser.h \
     game.h
+
+OTHER_FILES = qml/Constants.js \
+    qml/main.qml \
+    qml/ChessBoard.qml \
+    qml/GameButton.qml

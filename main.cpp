@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <QQmlApplicationEngine>
 #include <QDebug>
 #include <QMessageBox>
 
@@ -8,6 +9,10 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    QQmlApplicationEngine engine;
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+
 
     GameController game;
     game.nextMove({ 1, 0 }, { 2, 0 });

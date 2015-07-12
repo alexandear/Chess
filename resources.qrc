@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/MainForm.ui.qml</file>
+        <file>qml/ChessBoard.qml</file>
+        <file>qml/GameButton.qml</file>
+        <file>qml/Constants.js</file>
+    </qresource>
+</RCC>
