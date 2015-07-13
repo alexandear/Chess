@@ -7,7 +7,7 @@ Rook::Rook(Game::Side t_side)
 }
 
 bool Rook::areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                           const Board& t_board) const
+                               const Board& t_board) const
 {
     if (t_from.rank() == t_to.rank())
         return check(t_from, t_to, t_board, true);

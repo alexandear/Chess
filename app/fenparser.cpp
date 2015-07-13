@@ -1,5 +1,4 @@
 #include <stdexcept>
-#include <QDebug>
 
 #include "pieces/abstractpiece.h"
 #include "fenparser.h"

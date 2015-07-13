@@ -1,8 +1,9 @@
 #pragma once
 
-#include <QDebug>
-#include <QString>
+#include <array>
 #include <memory>
+
+#include <QString>
 
 #include "game.h"
 
@@ -16,21 +17,23 @@ public:
 
     enum class Type
     {
-        Empty,
-        Pawn,
-        Knight,
-        Bishop,
-        Rook,
-        Queen,
-        King
+        Empty  = 32,  // ' '
+        Pawn   = 112, // 'p'
+        Knight = 110, // 'n'
+        Bishop = 98,  // 'b'
+        Rook   = 114, // 'r'
+        Queen  = 113, // 'q'
+        King   = 107  // 'k'
     };
 
-    explicit AbstractPiece(Game::Side t_side);
+    AbstractPiece(Game::Side t_side);
     virtual ~AbstractPiece() {}
     AbstractPiece(const AbstractPiece&) = default;
     AbstractPiece(AbstractPiece&&) = default;
     AbstractPiece& operator=(const AbstractPiece&) & = default;
     AbstractPiece& operator=(AbstractPiece&&) & = default;
+
+    char letter() const;
 
     static QString toString(Type t_type);
     static char letter(Type t_type);

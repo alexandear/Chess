@@ -1,8 +1,9 @@
+#include <QPainter>
 #include <QPoint>
 
 #include "abstractpiece.h"
-#include "board.h"
 #include "bishop.h"
+#include "board.h"
 #include "king.h"
 #include "knight.h"
 #include "pawn.h"
@@ -12,6 +13,12 @@
 AbstractPiece::AbstractPiece(Game::Side t_side)
     : m_side(t_side)
 {
+}
+
+char AbstractPiece::letter() const
+{
+    auto alpha = letter(type());
+    return (m_side == Game::Side::White) ? toupper(alpha) : alpha;
 }
 
 bool AbstractPiece::isMovePermitted(const Coordinate& t_from, const Coordinate& t_to,
@@ -45,42 +52,12 @@ QString AbstractPiece::toString(Type t_type)
 
 char AbstractPiece::letter(AbstractPiece::Type t_type)
 {
-    switch (t_type) {
-    case Type::Pawn:
-        return 'p';
-    case Type::Knight:
-        return 'n';
-    case Type::Bishop:
-        return 'b';
-    case Type::Rook:
-        return 'r';
-    case Type::Queen:
-        return 'q';
-    case Type::King:
-        return 'k';
-    default:
-        return ' ';
-    }
+    return static_cast<char>(t_type);
 }
 
 AbstractPiece::Type AbstractPiece::fromLetter(char t_ch)
 {
-    switch (tolower(t_ch)) {
-    case 'p':
-        return Type::Pawn;
-    case 'n':
-        return Type::Knight;
-    case 'b':
-        return Type::Bishop;
-    case 'r':
-        return Type::Rook;
-    case 'q':
-        return Type::Queen;
-    case 'k':
-        return Type::King;
-    default:
-        return Type::Empty;
-    }
+    return static_cast<AbstractPiece::Type>(tolower(t_ch));
 }
 
 AbstractPiece::PiecePtr AbstractPiece::make(Type t_type, Game::Side t_side)

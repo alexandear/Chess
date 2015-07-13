@@ -6,24 +6,20 @@ import QtQuick.Layouts 1.1
 
 import "Constants.js" as Constants
 
-ApplicationWindow {
-    title: qsTr("Chess")
-    minimumWidth: Constants.APP_MINIMUM_WIDTH
-    minimumHeight: Constants.APP_MINIMUM_HEIGHT
-    visible: true
-    color: Constants.BACKGOUND_COLOR;
+Rectangle {
+    id: main
+    anchors.fill: parent
 
-    Loader {
-        source: "GameButton.qml";
-    }
+    color: Constants.BACKGOUND_COLOR;
 
     RowLayout {
         id: root
         anchors.fill: parent
         spacing: 0
 
-        ChessBoard {
+        Board {
             id: board
+            objectName: "board"
             anchors.left: parent.left; anchors.top: parent.top; anchors.bottom: parent.bottom;
             anchors.margins: Constants.INDENT_DEFAULT
             width: height
@@ -42,6 +38,7 @@ ApplicationWindow {
                 onClicked: {
                     loadButton.visible = !loadButton.visible
                     saveButton.visible = !saveButton.visible
+                    board.clear()
                 }
             }
 

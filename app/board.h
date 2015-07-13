@@ -12,13 +12,13 @@ class AbstractPiece;
 class Board
 {
 public:
-    static const int SQUARE_COUNT = 8;
+    static const int BOARD_SIZE = 8;
     static const QString START_FEN;
 
     using PiecePtr = std::shared_ptr<AbstractPiece>;
-    using PiecesMatrix = std::array<std::array<PiecePtr, SQUARE_COUNT>, SQUARE_COUNT>;
+    using PiecesMatrix = std::array<std::array<PiecePtr, BOARD_SIZE>, BOARD_SIZE>;
 
-    Board();
+    Board() { }
 
     const PiecePtr& at(int t_rank, int t_file) const
     {
@@ -38,14 +38,16 @@ public:
     }
 
     void setFen(const QString& t_fenStr);
-    void setPieces(PiecesMatrix t_pieces) { m_pieces = t_pieces; }
+    void setPieces(const PiecesMatrix& t_pieces) { m_pieces = t_pieces; }
     PiecesMatrix pieces() const { return m_pieces; }
     void setActiveSide(Game::Side t_side) { m_activeSide = t_side; }
     Game::Side activeSide() const { return m_activeSide; }
     void setMoveNumber(int t_moveNumber) { m_moveNumber = t_moveNumber; }
 
+    QString piecesToString() const;
     void move(const Coordinate& t_from, const Coordinate& t_to);
     void print() const;
+
 
 private:
     Game::Side m_activeSide;

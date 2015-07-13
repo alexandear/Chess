@@ -7,7 +7,7 @@ Knight::Knight(Game::Side t_side)
 }
 
 bool Knight::areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                             const Board& t_board) const
+                                 const Board& t_board) const
 {
     Q_UNUSED(t_board)
     // Destination square is unoccupied or occupied by opposite color

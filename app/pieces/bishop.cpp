@@ -7,7 +7,7 @@ Bishop::Bishop(Game::Side t_side)
 }
 
 bool Bishop::areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                             const Board& t_board) const
+                                 const Board& t_board) const
 {
     if ((t_to.file() - t_from.file() == t_to.rank() - t_from.rank())
         || (t_to.file() - t_from.file() == t_from.rank() - t_to.rank())) {

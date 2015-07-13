@@ -1,16 +1,11 @@
 #include <QTextStream>
-#include <QDebug>
 
 #include "pieces/abstractpiece.h"
 #include "board.h"
 #include "fenparser.h"
 
-const QString Board::START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-
-Board::Board()
-{
-    setFen(START_FEN);
-}
+const QString Board::START_FEN =
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 void Board::setFen(const QString& t_fenStr)
 {
@@ -29,23 +24,16 @@ void Board::move(const Coordinate& t_from, const Coordinate& t_to)
     }
 }
 
-void Board::placePieces(Game::Side t_side)
+QString Board::piecesToString() const
 {
-    using Type = AbstractPiece::Type;
-
-    auto pawn = t_side == Game::Side::White ? 1 : 6;
-    auto base = t_side == Game::Side::White ? 0 : 7;
-
-    for (auto i = 0; i < SQUARE_COUNT; ++i)
-        at(pawn, i) = AbstractPiece::make(Type::Pawn, t_side);
-    at(base, 0) = AbstractPiece::make(Type::Rook,   t_side);
-    at(base, 1) = AbstractPiece::make(Type::Knight, t_side);
-    at(base, 2) = AbstractPiece::make(Type::Bishop, t_side);
-    at(base, 3) = AbstractPiece::make(Type::King,   t_side);
-    at(base, 4) = AbstractPiece::make(Type::Queen,  t_side);
-    at(base, 5) = AbstractPiece::make(Type::Bishop, t_side);
-    at(base, 6) = AbstractPiece::make(Type::Knight, t_side);
-    at(base, 7) = AbstractPiece::make(Type::Rook,   t_side);
+    QString res;
+    res.reserve(BOARD_SIZE * BOARD_SIZE);
+    for (auto i = 0; i < BOARD_SIZE; ++i) {
+        for (auto j = 0; j < BOARD_SIZE; ++j) {
+            res.push_front(at(i, j) ? at(i, j)->letter() : ' ');
+        }
+    }
+    return res;
 }
 
 void Board::print() const

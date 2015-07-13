@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/MainWindow.qml</file>
+        <file>qml/Board.qml</file>
+        <file>qml/GameButton.qml</file>
+        <file>qml/Constants.js</file>
+        <file>qml/Piece.qml</file>
+        <file>fonts/DiagramTTAlpha2.ttf</file>
+    </qresource>
+</RCC>

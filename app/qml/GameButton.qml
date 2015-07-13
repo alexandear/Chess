@@ -7,7 +7,7 @@ import "Constants.js" as Constants
 Button {
     property string text
     anchors.left: parent.left; anchors.right: parent.right;
-    text: text
+    text: qsTr(text)
     style: ButtonStyle {
         background: Rectangle {
             radius: Constants.BUTTON_RADIUS
@@ -16,7 +16,6 @@ Button {
         label: Text {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            font.family: Constants.BUTTON_FONT_FAMILY
             font.pointSize: Constants.BUTTON_FONT_SIZE
             color: Constants.BUTTON_TEXT_COLOR
             text: control.text

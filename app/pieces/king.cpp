@@ -7,7 +7,7 @@ King::King(Game::Side t_side)
 }
 
 bool King::areSquaresPermitted(const Coordinate& t_from, const Coordinate& t_to,
-                           const Board& t_board) const
+                               const Board& t_board) const
 {
     Q_UNUSED(t_board)
 
